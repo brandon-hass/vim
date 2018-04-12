@@ -8,6 +8,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-syntastic/syntastic'
 Plug 'Raimondi/delimitMate'
 Plug 'fatih/vim-go'
+Plug 'ngmy/vim-rubocop'
 
 call plug#end()
 
@@ -40,6 +41,7 @@ let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_test_timeout= '45s'
+let g:go_list_type = "quickfix"
 
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
@@ -51,6 +53,9 @@ au FileType go nmap <Leader>s <Plug>(go-implements)
 " ---------- Vim ---------
 filetype plugin indent on
 set ts=2 sw=2 sts=2 expandtab
+
+" Remove all trailing whitespace by pressing F5
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 set number
 set noswapfile
